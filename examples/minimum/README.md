@@ -1,5 +1,5 @@
-[![Build Status](https://github.com/boldlink/terraform-aws-acm/actions/workflows/pre-commit.yml/badge.svg)](https://github.com/boldlink/terraform-aws-acm/actions)
-[![Build Status](https://github.com/boldlink/terraform-aws-acm/actions/workflows/checkov.yml/badge.svg)](https://github.com/boldlink/terraform-aws-acm/actions)
+[![Build Status](https://github.com/boldlink/terraform-aws-acm/actions/workflows/pre-commit.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-acm/actions)
+[![Build Status](https://github.com/boldlink/terraform-aws-acm/actions/workflows/checkov.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-acm/actions)
 
 [<img src="https://avatars.githubusercontent.com/u/25388280?s=200&v=4" width="96"/>](https://boldlink.io)
 
@@ -23,6 +23,7 @@ No providers.
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_acm_minimum"></a> [acm\_minimum](#module\_acm\_minimum) | ./../../ | n/a |
+| <a name="module_route53"></a> [route53](#module\_route53) | boldlink/route53/aws | 1.0.1 |
 
 ## Resources
 

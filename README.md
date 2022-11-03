@@ -1,5 +1,5 @@
-[![Build Status](https://github.com/boldlink/terraform-aws-acm/actions/workflows/pre-commit.yml/badge.svg)](https://github.com/boldlink/terraform-aws-acm/actions)
-[![Build Status](https://github.com/boldlink/terraform-aws-acm/actions/workflows/checkov.yml/badge.svg)](https://github.com/boldlink/terraform-aws-acm/actions)
+[![Build Status](https://github.com/boldlink/terraform-aws-acm/actions/workflows/pre-commit.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-acm/actions)
+[![Build Status](https://github.com/boldlink/terraform-aws-acm/actions/workflows/checkov.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-acm/actions)
 
 [<img src="https://avatars.githubusercontent.com/u/25388280?s=200&v=4" width="96"/>](https://boldlink.io)
 
@@ -7,7 +7,7 @@
 
 ## Description
 
-lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem.
+This module creates an AWS ACM certificate
 
 Examples available [`here`](github.com/boldlink/terraform-aws-acm/tree/main/examples)
 
@@ -15,13 +15,32 @@ Examples available [`here`](github.com/boldlink/terraform-aws-acm/tree/main/exam
 *NOTE*: These examples use the latest version of this module
 
 ```console
+module "route53" {
+  source  = "boldlink/route53/aws"
+  version = "1.0.1"
+  name    = local.name
+}
+
+module "acm_minimum" {
+  source            = "boldlink/acm/aws"
+  domain_name       = local.name
+  validation_method = "DNS"
+  tags = {
+    Environment        = "examples"
+    "user::CostCenter" = "terraform"
+  }
+  depends_on = [
+    module.route53
+  ]
+}
+
 
 ```
 ## Documentation
 
-[<ex. Amazon VPC/Github/Cloudflare> Documentation](https://link)
+[AWS Documentation](https://docs.aws.amazon.com/acm/latest/userguide/acm-overview.html)
 
-[Terraform module documentation](https://link)
+[Terraform module documentation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/acm_certificate)
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements

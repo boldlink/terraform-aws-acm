@@ -8,10 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - feature: set creation of dns records to be optional and only be created if method of validation == DNS
 - feature: Add validation example with external dns provider
 - feature: Add email validation example
--
 
-
-## [1.0.0] - YYYY-MM-DD
+## [1.0.0] - 2022-11-03
 ### Description
 - feature: create an acm certificate
 - feature: validate certificate has been issued
