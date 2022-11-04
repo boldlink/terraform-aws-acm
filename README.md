@@ -7,7 +7,7 @@
 
 ## Description
 
-This module creates an AWS ACM certificate
+Terraform module which creates an ACM certificate with native support for validation using Route53 DNS
 
 Examples available [`here`](github.com/boldlink/terraform-aws-acm/tree/main/examples)
 
@@ -34,6 +34,9 @@ module "acm_minimum" {
   ]
 }
 
+locals {
+  name = "minimumexampledomain.com"
+}
 
 ```
 ## Documentation
