@@ -62,3 +62,8 @@ output "validation_emails" {
   description = "List of addresses that received a validation email. Only set if EMAIL validation was used."
   value       = aws_acm_certificate.main.validation_emails
 }
+
+output "record_fqdn" {
+  description = "FQDN built using the zone domain and name."
+  value       = [for record in aws_route53_record.main : record.fqdn]
+}

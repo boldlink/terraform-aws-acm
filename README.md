@@ -9,6 +9,8 @@
 
 Terraform module which creates an ACM certificate with native support for validation using Route53 DNS
 
+*NOTE*: certificate validation is only successful when the domain is registered in aws. To validate a certificate for a domain managed outside aws, create a record similar to the one displayed in the output section where your domain is registered, e.g Godaddy/cloudflare.
+
 Examples available [`here`](github.com/boldlink/terraform-aws-acm/tree/main/examples)
 
 ## Usage
@@ -97,6 +99,7 @@ No modules.
 | <a name="output_not_after"></a> [not\_after](#output\_not\_after) | Expiration date and time of the certificate. |
 | <a name="output_not_before"></a> [not\_before](#output\_not\_before) | Expiration date and time of the certificate. |
 | <a name="output_pending_renewal"></a> [pending\_renewal](#output\_pending\_renewal) | true if a Private certificate eligible for managed renewal is within the early\_renewal\_duration period. |
+| <a name="output_record_fqdn"></a> [record\_fqdn](#output\_record\_fqdn) | FQDN built using the zone domain and name. |
 | <a name="output_renewal_eligibility"></a> [renewal\_eligibility](#output\_renewal\_eligibility) | Whether the certificate is eligible for managed renewal. |
 | <a name="output_renewal_summary"></a> [renewal\_summary](#output\_renewal\_summary) | Contains information about the status of ACM's managed renewal for the certificate. |
 | <a name="output_status"></a> [status](#output\_status) | Status of the certificate. |
