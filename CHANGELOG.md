@@ -15,6 +15,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - feature: validate certificate has been issued
 - feature: deploy the required validation records using route53
 
-[Unreleased]: https://github.com/boldlink/terraform-aws-acm/compare/1.0.0...HEAD
+## [0.1.0] - 2022-11-01
+### Description
+- feature: Initial module release
 
+[Unreleased]: https://github.com/boldlink/terraform-aws-acm/compare/1.0.0...HEAD
 [1.0.0]: https://github.com/boldlink/terraform-aws-acm/releases/tag/1.0.0
+[0.1.0]: https://github.com/boldlink/terraform-aws-acm/releases/tag/0.1.0
