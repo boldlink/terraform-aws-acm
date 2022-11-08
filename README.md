@@ -7,7 +7,7 @@
 
 ## Description
 
-Terraform module which creates an ACM certificate with native support for validation using Route53 DNS
+Terraform module which creates an ACM certificate with native support for automatic record validation using Route53 DNS
 
 *NOTE*: certificate validation is only successful when the domain is registered in aws and is inside the account this stack is being deployed. To validate a certificate for a domain managed outside aws, create a record similar to the one displayed in the output section where your domain is registered, e.g Godaddy/cloudflare.
 
