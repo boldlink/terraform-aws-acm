@@ -7,7 +7,12 @@
 
 ## Description
 
-Terraform module which creates an ACM certificate with native support for automatic record validation using Route53 DNS
+Terraform module which creates an acm certificate, Route53 record and acm certificate validation resource.
+
+### Why use this module
+This module supports automatic record validation using Route53 DNS.
+Additionally, this module as well as other Boldlink modules are created following AWS security best practices highlighted by checkov scans on the modules.
+
 
 *NOTE*: certificate validation is only successful when the domain is registered in aws and is inside the account this stack is being deployed. To validate a certificate for a domain managed outside aws, create a record similar to the one displayed in the output section where your domain is registered, e.g Godaddy/cloudflare.
 
@@ -59,7 +64,7 @@ locals {
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.38.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.37.0 |
 
 ## Modules
 
