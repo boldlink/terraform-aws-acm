@@ -1,5 +1,8 @@
+[![Build Status](https://github.com/boldlink/terraform-aws-acm/actions/workflows/release.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-acm/actions)
 [![Build Status](https://github.com/boldlink/terraform-aws-acm/actions/workflows/pre-commit.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-acm/actions)
+[![Build Status](https://github.com/boldlink/terraform-aws-acm/actions/workflows/pr-labeler.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-acm/actions)
 [![Build Status](https://github.com/boldlink/terraform-aws-acm/actions/workflows/checkov.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-acm/actions)
+[![Build Status](https://github.com/boldlink/terraform-aws-acm/actions/workflows/auto-badge.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-acm/actions)
 
 [<img src="https://avatars.githubusercontent.com/u/25388280?s=200&v=4" width="96"/>](https://boldlink.io)
 
