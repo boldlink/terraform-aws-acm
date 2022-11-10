@@ -12,6 +12,11 @@
 
 Terraform module which creates an acm certificate, Route53 record and acm certificate validation resource.
 
+### Features in this module
+Creates an acm certificate
+deploys the required validation records using route53
+validates whether certificate has been issued
+
 ### Why use this module
 This module supports automatic record validation using Route53 DNS.
 Additionally, this module as well as other Boldlink modules are created following AWS security best practices highlighted by checkov scans on the modules.
