@@ -1,51 +1,64 @@
-[![Build Status](https://github.com/boldlink/<REPO_NAME>/actions/workflows/pre-commit.yml/badge.svg)](https://github.com/boldlink/<REPO_NAME>/actions)
-[![Build Status](https://github.com/boldlink/<REPO_NAME>/actions/workflows/checkov.yml/badge.svg)](https://github.com/boldlink/<REPO_NAME>/actions)
+[![Build Status](https://github.com/boldlink/terraform-aws-acm/actions/workflows/release.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-acm/actions)
+[![Build Status](https://github.com/boldlink/terraform-aws-acm/actions/workflows/pre-commit.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-acm/actions)
+[![Build Status](https://github.com/boldlink/terraform-aws-acm/actions/workflows/pr-labeler.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-acm/actions)
+[![Build Status](https://github.com/boldlink/terraform-aws-acm/actions/workflows/checkov.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-acm/actions)
+[![Build Status](https://github.com/boldlink/terraform-aws-acm/actions/workflows/auto-badge.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-acm/actions)
 
 [<img src="https://avatars.githubusercontent.com/u/25388280?s=200&v=4" width="96"/>](https://boldlink.io)
 
-# Terraform  module \<PROVIDER>-\<MODULE> Terraform module
-
-## How to use this template -- DELETE THIS SECTION BEFORE PR
-1. Create your new module repository by using terraform only (see SOP) and make sure to use this template.
-2. Add your Terraform code in any branch other than `main/master`
-3. Change the `<REPO_NAME>` value for any badges in the `README.md` files in the root `examples` and `modules` folders.
-4. Add nested modules in the `modules` folder, or `DELETE` the nested folder if not used.
-    * _Note: you will also maintain the nested modules full `README.md` files, remember nested modules can be used on their own._
-5. Add examples in the `examples` folder.
-    * _Note: you can have as many examples as you want, but two are required._
-        * _minimum - this is the example with the minimum code to use the module._
-        * _complete - this is the example with all features for a single module used (the most common use)._
-6. Run `pre-commit run --all-files` to update the `README` and fix any issues.
-    * _Note: make sure your IDE tool uses spaces and not tabs specially on `yaml` files._
-7. Run `checkov` or `terrascan` tool and make sure to add the log to the PR (something to automate).
-    * _Note: make sure to scan your module nested modules and examples (great candidate for a makefile action/script and automation)._
-8. Open a pull request into the default branch (usually `main`) and have it reviewed. don't forget to add the security scan logs.
-    * _Note: make sure to add the nested modules README's to the pre-commit config so they are also updated and validated._
-9. If you have been assigned a reviewer DM the reviewer, or the channel if it has been more than one day.
-10. Post to the channel news of the releases to the teams.
+# AWS ACM Terraform module
 
 ## Description
 
-lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem.
+Terraform module which creates an acm certificate, Route53 record and acm certificate validation resource.
 
-Examples available [`here`]github.com/boldlink/<REPO_NAME>//tree/main/examples)
+### Features in this module
+Creates an acm certificate
+deploys the required validation records using route53
+validates whether certificate has been issued
+
+### Why use this module
+This module supports automatic record validation using Route53 DNS.
+Additionally, this module as well as other Boldlink modules are created following AWS security best practices highlighted by checkov scans on the modules.
+
+
+*NOTE*: certificate validation is only successful when the domain is registered in aws and is inside the account this stack is being deployed. To validate a certificate for a domain managed outside aws, create a record similar to the one displayed in the output section where your domain is registered, e.g Godaddy/cloudflare.
+
+Examples available [`here`](github.com/boldlink/terraform-aws-acm/tree/main/examples)
 
 ## Usage
 *NOTE*: These examples use the latest version of this module
 
 ```console
-module "miniumum" {
-  source  = "boldlink/<module_name>/<provider>"
-  version = "x.x.x"
-  <insert the minimum required variables here if any are required>
-  ...
+module "route53" {
+  source  = "boldlink/route53/aws"
+  version = "1.0.1"
+  name    = local.name
 }
+
+module "acm_minimum" {
+  source            = "boldlink/acm/aws"
+  domain_name       = local.name
+  validation_method = "DNS"
+  tags = {
+    Environment        = "examples"
+    "user::CostCenter" = "terraform"
+  }
+  depends_on = [
+    module.route53
+  ]
+}
+
+locals {
+  name = "minimumexampledomain.com"
+}
+
 ```
 ## Documentation
 
-[<ex. Amazon VPC/Github/Cloudflare> Documentation](https://link)
+[AWS Documentation](https://docs.aws.amazon.com/acm/latest/userguide/acm-overview.html)
 
-[Terraform module documentation](https://link)
+[Terraform module documentation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/acm_certificate)
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
@@ -53,11 +66,13 @@ module "miniumum" {
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.14.11 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.20.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.30.0 |
 
 ## Providers
 
-No providers.
+| Name | Version |
+|------|---------|
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.38.0 |
 
 ## Modules
 
@@ -65,15 +80,45 @@ No modules.
 
 ## Resources
 
-No resources.
+| Name | Type |
+|------|------|
+| [aws_acm_certificate.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/acm_certificate) | resource |
+| [aws_acm_certificate_validation.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/acm_certificate_validation) | resource |
+| [aws_route53_record.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
+| [aws_route53_zone.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/route53_zone) | data source |
 
 ## Inputs
 
-No inputs.
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_allow_overwrite"></a> [allow\_overwrite](#input\_allow\_overwrite) | (Optional) Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to update the record in Terraform and does not prevent other resources within Terraform or manual Route 53 changes outside Terraform from overwriting this record. false by default. This configuration is not recommended for most environments. | `bool` | `true` | no |
+| <a name="input_certificate_transparency_logging_preference"></a> [certificate\_transparency\_logging\_preference](#input\_certificate\_transparency\_logging\_preference) | (Optional) Whether certificate details should be added to a certificate transparency log. Valid values are ENABLED or DISABLED | `string` | `"ENABLED"` | no |
+| <a name="input_domain_name"></a> [domain\_name](#input\_domain\_name) | (Required) Domain name for which the certificate should be issued | `string` | n/a | yes |
+| <a name="input_subject_alternative_names"></a> [subject\_alternative\_names](#input\_subject\_alternative\_names) | (Optional) Set of domains that should be SANs in the issued certificate. To remove all elements of a previously configured list, set this value equal to an empty list ([]) | `list(string)` | `[]` | no |
+| <a name="input_tags"></a> [tags](#input\_tags) | (Optional) Map of tags to assign to the resource. If configured with a provider default\_tags configuration block present, tags with matching keys will overwrite those defined at the provider-level. | `map(string)` | `{}` | no |
+| <a name="input_ttl"></a> [ttl](#input\_ttl) | The TTL of the record. | `number` | `60` | no |
+| <a name="input_validation_method"></a> [validation\_method](#input\_validation\_method) | (Required) Which method to use for validation. DNS or EMAIL are valid, NONE can be used for certificates that were imported into ACM and then into Terraform. | `string` | n/a | yes |
+| <a name="input_validation_option"></a> [validation\_option](#input\_validation\_option) | (Optional) Configuration block used to specify information about the initial validation of each domain name. | `any` | `{}` | no |
+| <a name="input_wait_for_issue"></a> [wait\_for\_issue](#input\_wait\_for\_issue) | Whether to wait for the certificate to be issued by ACM | `bool` | `false` | no |
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_arn"></a> [arn](#output\_arn) | ARN of the certificate |
+| <a name="output_domain_name"></a> [domain\_name](#output\_domain\_name) | Domain name for which the certificate is issued |
+| <a name="output_domain_validation_options"></a> [domain\_validation\_options](#output\_domain\_validation\_options) | Set of domain validation objects which can be used to complete certificate validation. Can have more than one element, e.g., if SANs are defined. Only set if DNS-validation was used. |
+| <a name="output_id"></a> [id](#output\_id) | ARN of the certificate |
+| <a name="output_not_after"></a> [not\_after](#output\_not\_after) | Expiration date and time of the certificate. |
+| <a name="output_not_before"></a> [not\_before](#output\_not\_before) | Expiration date and time of the certificate. |
+| <a name="output_pending_renewal"></a> [pending\_renewal](#output\_pending\_renewal) | true if a Private certificate eligible for managed renewal is within the early\_renewal\_duration period. |
+| <a name="output_record_fqdn"></a> [record\_fqdn](#output\_record\_fqdn) | FQDN built using the zone domain and name. |
+| <a name="output_renewal_eligibility"></a> [renewal\_eligibility](#output\_renewal\_eligibility) | Whether the certificate is eligible for managed renewal. |
+| <a name="output_renewal_summary"></a> [renewal\_summary](#output\_renewal\_summary) | Contains information about the status of ACM's managed renewal for the certificate. |
+| <a name="output_status"></a> [status](#output\_status) | Status of the certificate. |
+| <a name="output_tags_all"></a> [tags\_all](#output\_tags\_all) | Map of tags assigned to the resource, including those inherited from the provider default\_tags configuration block. |
+| <a name="output_type"></a> [type](#output\_type) | Source of the certificate. |
+| <a name="output_validation_emails"></a> [validation\_emails](#output\_validation\_emails) | List of addresses that received a validation email. Only set if EMAIL validation was used. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Third party software

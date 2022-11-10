@@ -1,5 +1,8 @@
-[![Build Status](https://github.com/boldlink/<REPO_NAME>/actions/workflows/pre-commit.yml/badge.svg)](https://github.com/boldlink/<REPO_NAME>/actions)
-[![Build Status](https://github.com/boldlink/<REPO_NAME>/actions/workflows/checkov.yml/badge.svg)](https://github.com/boldlink/<REPO_NAME>/actions)
+[![Build Status](https://github.com/boldlink/terraform-aws-acm/actions/workflows/release.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-acm/actions)
+[![Build Status](https://github.com/boldlink/terraform-aws-acm/actions/workflows/pre-commit.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-acm/actions)
+[![Build Status](https://github.com/boldlink/terraform-aws-acm/actions/workflows/pr-labeler.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-acm/actions)
+[![Build Status](https://github.com/boldlink/terraform-aws-acm/actions/workflows/checkov.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-acm/actions)
+[![Build Status](https://github.com/boldlink/terraform-aws-acm/actions/workflows/auto-badge.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-acm/actions)
 
 [<img src="https://avatars.githubusercontent.com/u/25388280?s=200&v=4" width="96"/>](https://boldlink.io)
 
@@ -12,7 +15,7 @@
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.14.11 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.20.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.30.0 |
 
 ## Providers
 
@@ -20,7 +23,10 @@ No providers.
 
 ## Modules
 
-No modules.
+| Name | Source | Version |
+|------|--------|---------|
+| <a name="module_acm_minimum"></a> [acm\_minimum](#module\_acm\_minimum) | ./../../ | n/a |
+| <a name="module_route53"></a> [route53](#module\_route53) | boldlink/route53/aws | 1.0.1 |
 
 ## Resources
 
@@ -32,7 +38,9 @@ No inputs.
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_record_fqdn"></a> [record\_fqdn](#output\_record\_fqdn) | FQDN built using the zone domain and name. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Third party software
