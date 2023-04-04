@@ -1,3 +1,6 @@
+[![License](https://img.shields.io/badge/License-Apache-blue.svg)](https://github.com/boldlink/terraform-aws-acm/blob/main/LICENSE)
+[![Latest Release](https://img.shields.io/github/release/boldlink/terraform-aws-acm.svg)](https://github.com/boldlink/terraform-aws-acm/releases/latest)
+[![Build Status](https://github.com/boldlink/terraform-aws-acm/actions/workflows/update.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-acm/actions)
 [![Build Status](https://github.com/boldlink/terraform-aws-acm/actions/workflows/release.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-acm/actions)
 [![Build Status](https://github.com/boldlink/terraform-aws-acm/actions/workflows/pre-commit.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-acm/actions)
 [![Build Status](https://github.com/boldlink/terraform-aws-acm/actions/workflows/pr-labeler.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-acm/actions)
