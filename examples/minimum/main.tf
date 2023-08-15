@@ -1,4 +1,5 @@
 module "route53" {
+  #checkov:skip=CKV_TF_1:Ensure Terraform module sources use a commit hash
   source  = "boldlink/route53/aws"
   version = "1.0.1"
   name    = local.name
