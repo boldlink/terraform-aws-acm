@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - feature: set creation of dns records to be optional and only be created if method of validation == DNS and create route53 record == true
 - feature: Add validation example with external dns provider
 - feature: Add email validation example
+- fix: CKV_TF_1:Ensure Terraform module sources use a commit hash
 
 ## [1.0.0] - 2022-11-03
 ### Description
