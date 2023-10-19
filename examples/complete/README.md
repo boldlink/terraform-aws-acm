@@ -30,7 +30,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_acm_complete"></a> [acm\_complete](#module\_acm\_complete) | ./../../ | n/a |
+| <a name="module_acm_complete"></a> [acm\_complete](#module\_acm\_complete) | ../../ | n/a |
 | <a name="module_route53"></a> [route53](#module\_route53) | boldlink/route53/aws | 1.0.1 |
 
 ## Resources
@@ -61,4 +61,4 @@ This repository uses third party software:
   * Install with `brew install tflint`
   * Manually use via pre-commit
 
-#### BOLDLink-SIG 2022
+#### BOLDLink-SIG 2023

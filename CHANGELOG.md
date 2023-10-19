@@ -10,6 +10,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - feature: Add email validation example
 - fix: CKV_TF_1:Ensure Terraform module sources use a commit hash
 
+## [1.0.1] - 2023-10-19
+### Description
+- showcase usage of validation_options
+- showcase usage of subject_alternative_names
+- Added checkov exception file
+
 ## [1.0.0] - 2022-11-03
 ### Description
 - feature: create an acm certificate
@@ -20,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Description
 - feature: Initial module release
 
-[Unreleased]: https://github.com/boldlink/terraform-aws-acm/compare/1.0.0...HEAD
+[Unreleased]: https://github.com/boldlink/terraform-aws-acm/compare/1.0.1...HEAD
+[1.0.1]: https://github.com/boldlink/terraform-aws-acm/releases/tag/1.0.1
 [1.0.0]: https://github.com/boldlink/terraform-aws-acm/releases/tag/1.0.0
 [0.1.0]: https://github.com/boldlink/terraform-aws-acm/releases/tag/0.1.0
