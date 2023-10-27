@@ -27,14 +27,14 @@ This module supports automatic record validation using Route53 DNS.
 Additionally, this module as well as other Boldlink modules are created following AWS security best practices highlighted by checkov scans on the modules.
 
 
-*NOTE*: certificate validation is only successful when the domain is registered in aws and is inside the account this stack is being deployed. To validate a certificate for a domain managed outside aws, create a record similar to the one displayed in the output section where your domain is registered, e.g Godaddy/cloudflare.
+**NOTE**: certificate validation is only successful when the domain is registered in aws and is inside the account this stack is being deployed. To validate a certificate for a domain managed outside aws, create a record similar to the one displayed in the output section where your domain is registered, e.g Godaddy/cloudflare.
 
-Examples available [`here`](github.com/boldlink/terraform-aws-acm/tree/main/examples)
+Examples available [`here`](./examples)
 
 ## Usage
-*NOTE*: These examples use the latest version of this module
+**NOTE**: These examples use the latest version of this module
 
-```console
+```hcl
 module "route53" {
   source  = "boldlink/route53/aws"
   version = "1.0.1"
@@ -43,6 +43,7 @@ module "route53" {
 
 module "acm_minimum" {
   source            = "boldlink/acm/aws"
+  version           = "<provide_latest_version_here>"
   domain_name       = local.name
   validation_method = "DNS"
   tags = {
@@ -77,7 +78,7 @@ locals {
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.12.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.22.0 |
 
 ## Modules
 
@@ -169,5 +170,4 @@ make cleansupporting
 make cleanstatefiles
 ```
 
-
-#### BOLDLink-SIG 2022
+#### BOLDLink-SIG 2023
